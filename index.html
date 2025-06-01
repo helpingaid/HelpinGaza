@@ -24,62 +24,25 @@
       font-size: 1.5rem;
       color: #e60000;
     }
-    .search-box {
-      display: flex;
-      justify-content: center;
-      margin: 5rem auto 2rem;
-      max-width: 600px;
+    .search-container {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1rem;
     }
-    .search-box input[type="text"] {
-      width: 100%;
-      padding: 0.75rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px 0 0 8px;
-      outline: none;
-    }
-    .search-box button {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-left: none;
-      background-color: #e60000;
-      color: white;
-      border-radius: 0 8px 8px 0;
-      cursor: pointer;
-    }
-    iframe {
-      width: 100%;
-      height: 80vh;
-      border: none;
-      display: block;
+    .gcse-search {
+      margin-top: 2rem;
     }
   </style>
+  <script async src="https://cse.google.com/cse.js?cx=e36db80eb79a24fd4"></script>
 </head>
 <body>
   <header>
     <h1>Helping Gaza</h1>
   </header>
 
-  <div class="search-box">
-    <form id="searchForm">
-      <input type="text" id="query" placeholder="Cerca sul web per aiutare Gaza..." required />
-      <button type="submit">Cerca</button>
-    </form>
+  <div class="search-container">
+    <p>Cerca sul web per aiutare Gaza ♥</p>
+    <div class="gcse-search"></div>
   </div>
-
-  <iframe id="results" src=""></iframe>
-
-  <script>
-    const form = document.getElementById('searchForm');
-    const queryInput = document.getElementById('query');
-    const resultsFrame = document.getElementById('results');
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const query = encodeURIComponent(queryInput.value);
-      resultsFrame.src = `https://cse.google.com/cse?cx=e36db80eb79a24fd4&q=${query}`;
-    });
-  </script>
 </body>
 </html>
