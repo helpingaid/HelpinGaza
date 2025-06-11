@@ -8,41 +8,117 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      color: #333;
-    }
-    header {
-      background-color: #ffffff;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: row;
     }
-    header h1 {
-      margin: 0;
-      font-size: 1.5rem;
-      color: #e60000;
+
+    aside {
+      width: 250px;
+      background-color: #f4f4f4;
+      padding: 1em;
+      border-right: 1px solid #ccc;
     }
-    .search-container {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 1rem;
+
+    main {
+      flex: 1;
+      padding: 2em;
     }
-    .gcse-search {
-      margin-top: 2rem;
+
+    .search-box {
+      text-align: center;
+      margin-bottom: 2em;
+    }
+
+    .search-box input[type="text"] {
+      width: 70%;
+      padding: 0.5em;
+      font-size: 1em;
+    }
+
+    .search-box select, .search-box button {
+      padding: 0.5em;
+      font-size: 1em;
+      margin-left: 0.5em;
+    }
+
+    .referral-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+    }
+
+    .card {
+      flex: 1 1 200px;
+      border: 1px solid #ddd;
+      padding: 1em;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .card img {
+      max-width: 100px;
+      margin-bottom: 1em;
     }
   </style>
-  <script async src="https://cse.google.com/cse.js?cx=e36db80eb79a24fd4"></script>
 </head>
 <body>
-  <header>
-    <h1>Helping Gaza</h1>
-  </header>
+  <aside>
+    <h3>Sponsored</h3>
+    <!-- Example ad block -->
+    <div style="margin-bottom: 1em;">
+      <img src="https://via.placeholder.com/200x100?text=Ad+1" alt="Ad 1">
+    </div>
+    <div>
+      <img src="https://via.placeholder.com/200x100?text=Ad+2" alt="Ad 2">
+    </div>
+  </aside>
 
-  <div class="search-container">
-    <p>Cerca sul web per aiutare Gaza ♥</p>
-    <div class="gcse-search"></div>
-  </div>
+  <main>
+    <div class="search-box">
+      <input id="query" type="text" placeholder="Search the web..." />
+      <select id="engine">
+        <option value="google">Google</option>
+        <option value="bing">Bing</option>
+      </select>
+      <button onclick="searchWeb()">Search</button>
+    </div>
+
+    <div class="referral-cards">
+      <div class="card">
+        <a href="https://www.amazon.it/?tag=tuo-codice-affiliazione" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" />
+          <p>Shop on Amazon</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="https://www.booking.com/index.html?aid=tuo-codice-affiliazione" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Booking.com_logo.svg" alt="Booking" />
+          <p>Book with Booking.com</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="https://www.aliexpress.com/?aff_fcid=tuo-codice-affiliazione" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/AliExpress_logo.svg" alt="AliExpress" />
+          <p>Deals on AliExpress</p>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function searchWeb() {
+      const query = document.getElementById('query').value;
+      const engine = document.getElementById('engine').value;
+      let url = '';
+
+      if (engine === 'google') {
+        url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+      } else if (engine === 'bing') {
+        url = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
+      }
+
+      window.open(url, '_blank');
+    }
+  </script>
 </body>
 </html>
