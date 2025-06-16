@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GazaAid – Ogni ricerca fa la differenza</title>
-  <meta name="description" content="GazaAid è un motore di ricerca solidale: ogni ricerca sostiene progetti umanitari per Gaza e oltre.">
+  <title>Risultati – GazaAid</title>
+  <meta name="description" content="Risultati di ricerca solidale GazaAid.">
   <script async src="https://cse.google.com/cse.js?cx=e36db80eb79a24fd4"></script>
   <style>
     body {
@@ -18,12 +18,18 @@
       padding: 1.5em;
       color: white;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
     }
     main {
       padding: 2em;
-      max-width: 800px;
+      max-width: 1000px;
       margin: auto;
-      text-align: center;
     }
   </style>
 </head>
@@ -35,9 +41,7 @@
 </header>
 
 <main>
-  <p>Usa GazaAid per cercare su internet: parte dei proventi pubblicitari viene donata a ONG che operano a Gaza e in zone di crisi.</p>
-
-  <div class="gcse-searchbox-only" data-resultsUrl="results.html" data-newWindow="false"></div>
+  <div class="gcse-searchresults-only"></div>
 </main>
 
 </body>
