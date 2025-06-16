@@ -35,6 +35,10 @@
     .search-box {
       margin: 2em 0;
     }
+    .search-results {
+      margin-top: 2em;
+      text-align: left;
+    }
     .referral-grid {
       display: flex;
       gap: 1em;
@@ -64,6 +68,7 @@
       color: #666;
     }
   </style>
+  <script async src="https://cse.google.com/cse.js?cx=e36db80eb79a24fd4"></script>
 </head>
 <body>
 
@@ -76,9 +81,13 @@
   <p>Usa GazaAid per cercare su internet: parte dei proventi pubblicitari viene donata a ONG che operano a Gaza e in zone di crisi.</p>
 
   <div class="search-box">
-    <!-- Motore di ricerca Google CSE -->
-    <script async src="https://cse.google.com/cse.js?cx=e36db80eb79a24fd4"></script>
-    <div class="gcse-search"></div>
+    <!-- Search box only -->
+    <div class="gcse-searchbox-only"></div>
+  </div>
+
+  <!-- Search results appear here -->
+  <div class="search-results">
+    <div class="gcse-searchresults-only"></div>
   </div>
 
   <h2>Supporta anche facendo acquisti</h2>
