@@ -5,11 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Helping Gaza Search</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       display: flex;
       flex-direction: row;
+      min-height: 100vh;
     }
 
     aside {
@@ -29,22 +34,11 @@
       margin-bottom: 2em;
     }
 
-    .search-box input[type="text"] {
-      width: 70%;
-      padding: 0.5em;
-      font-size: 1em;
-    }
-
-    .search-box select, .search-box button {
-      padding: 0.5em;
-      font-size: 1em;
-      margin-left: 0.5em;
-    }
-
     .referral-cards {
       display: flex;
       flex-wrap: wrap;
       gap: 1em;
+      justify-content: center;
     }
 
     .card {
@@ -53,18 +47,46 @@
       padding: 1em;
       background-color: #fff;
       text-align: center;
+      max-width: 300px;
     }
 
     .card img {
       max-width: 100px;
       margin-bottom: 1em;
     }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      aside {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+      }
+
+      main {
+        padding: 1em;
+      }
+
+      .search-box input[type="text"] {
+        width: 100%;
+        margin-bottom: 1em;
+      }
+    }
   </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
 </head>
 <body>
   <aside>
     <h3>Sponsored</h3>
-    <!-- Example ad block -->
     <div style="margin-bottom: 1em;">
       <img src="https://via.placeholder.com/200x100?text=Ad+1" alt="Ad 1">
     </div>
@@ -75,12 +97,9 @@
 
   <main>
     <div class="search-box">
-      <input id="query" type="text" placeholder="Search the web..." />
-      <select id="engine">
-        <option value="google">Google</option>
-        <option value="bing">Bing</option>
-      </select>
-      <button onclick="searchWeb()">Search</button>
+      <!-- Google Programmable Search Engine -->
+      <script async src="https://cse.google.com/cse.js?cx=e36db80eb79a24fd4"></script>
+      <div class="gcse-search"></div>
     </div>
 
     <div class="referral-cards">
@@ -104,21 +123,5 @@
       </div>
     </div>
   </main>
-
-  <script>
-    function searchWeb() {
-      const query = document.getElementById('query').value;
-      const engine = document.getElementById('engine').value;
-      let url = '';
-
-      if (engine === 'google') {
-        url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-      } else if (engine === 'bing') {
-        url = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
-      }
-
-      window.open(url, '_blank');
-    }
-  </script>
 </body>
 </html>
