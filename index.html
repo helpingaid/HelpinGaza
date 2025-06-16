@@ -1,43 +1,131 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GazaAid – Ogni ricerca fa la differenza</title>
-  <meta name="description" content="GazaAid è un motore di ricerca solidale: ogni ricerca sostiene progetti umanitari per Gaza e oltre.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Helping Gaza Search</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f3f6f9;
-      color: #222;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: row;
+      min-height: 100vh;
     }
-    header {
-      background: #01726c;
-      padding: 1.5em;
-      color: white;
-      text-align: center;
+
+    aside {
+      width: 250px;
+      background-color: #f4f4f4;
+      padding: 1em;
+      border-right: 1px solid #ccc;
     }
+
     main {
+      flex: 1;
       padding: 2em;
-      max-width: 800px;
-      margin: auto;
+    }
+
+    .search-box {
       text-align: center;
+      margin-bottom: 2em;
+    }
+
+    .referral-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      justify-content: center;
+    }
+
+    .card {
+      flex: 1 1 200px;
+      border: 1px solid #ddd;
+      padding: 1em;
+      background-color: #fff;
+      text-align: center;
+      max-width: 300px;
+    }
+
+    .card img {
+      max-width: 100px;
+      margin-bottom: 1em;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      aside {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+      }
+
+      main {
+        padding: 1em;
+      }
+
+      .search-box input[type="text"] {
+        width: 100%;
+        margin-bottom: 1em;
+      }
     }
   </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
+  <!-- Google CSE script -->
   <script async src="https://cse.google.com/cse.js?cx=e36db80eb79a24fd4"></script>
 </head>
 <body>
+  <aside>
+    <h3>Sponsored</h3>
+    <div style="margin-bottom: 1em;">
+      <img src="https://via.placeholder.com/200x100?text=Ad+1" alt="Ad 1">
+    </div>
+    <div>
+      <img src="https://via.placeholder.com/200x100?text=Ad+2" alt="Ad 2">
+    </div>
+  </aside>
 
-<header>
-  <h1>GazaAid</h1>
-  <div>Ogni ricerca sostiene Gaza – naviga e aiuta con un click</div>
-</header>
+  <main>
+    <div class="search-box">
+      <!-- Search box only -->
+      <div class="gcse-searchbox-only"></div>
+    </div>
 
-<main>
-  <p>Usa GazaAid per cercare su internet: parte dei proventi pubblicitari viene donata a ONG che operano a Gaza e in zone di crisi.</p>
-  <div class="gcse-searchbox-only" data-resultsUrl="results.html" data-newWindow="false"></div>
-</main>
+    <!-- Results section -->
+    <div class="gcse-searchresults-only"></div>
 
+    <div class="referral-cards">
+      <div class="card">
+        <a href="https://www.amazon.it/?tag=tuo-codice-affiliazione" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" />
+          <p>Shop on Amazon</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="https://www.booking.com/index.html?aid=tuo-codice-affiliazione" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Booking.com_logo.svg" alt="Booking" />
+          <p>Book with Booking.com</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="https://www.aliexpress.com/?aff_fcid=tuo-codice-affiliazione" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/AliExpress_logo.svg" alt="AliExpress" />
+          <p>Deals on AliExpress</p>
+        </a>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
