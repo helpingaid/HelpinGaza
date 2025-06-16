@@ -17,6 +17,9 @@
       padding: 1.5em;
       color: white;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     header h1 {
       margin: 0;
@@ -67,6 +70,16 @@
       font-size: 0.9em;
       color: #666;
     }
+    .gcse-search, .gcse-searchbox-only, .gcse-searchresults-only {
+      width: 100%;
+    }
+    .gsc-control-cse, .gsc-control-wrapper-cse {
+      background: transparent !important;
+      border: none !important;
+    }
+    .gsc-webResult.gsc-result, .gsc-results .gsc-webResult, .gsc-result-info-container {
+      background-color: white !important;
+    }
   </style>
   <script async src="https://cse.google.com/cse.js?cx=e36db80eb79a24fd4"></script>
 </head>
@@ -81,29 +94,10 @@
   <p>Usa GazaAid per cercare su internet: parte dei proventi pubblicitari viene donata a ONG che operano a Gaza e in zone di crisi.</p>
 
   <div class="search-box">
-    <!-- Search box only -->
-    <div class="gcse-searchbox-only"></div>
-  </div>
-
-  <!-- Search results appear here -->
-  <div class="search-results">
-    <div class="gcse-searchresults-only"></div>
+    <!-- Search box + results combined to preserve branding -->
+    <div class="gcse-search"></div>
   </div>
 
   <h2>Supporta anche facendo acquisti</h2>
   <p>I seguenti link contengono codici affiliati: ogni acquisto genera una donazione indiretta.</p>
-  <div class="referral-grid">
-    <a href="https://www.amazon.it/?tag=TUO-CODICE" class="referral" target="_blank">Amazon</a>
-    <a href="https://www.booking.com/index.html?aid=TUO-CODICE" class="referral" target="_blank">Booking</a>
-    <a href="https://s.click.aliexpress.com/e/_TUOCODICE" class="referral" target="_blank">AliExpress</a>
-  </div>
-
-</main>
-
-<footer>
-  © 2025 GazaAid – Iniziativa no-profit per il bene comune. <br />
-  Powered by le tue ricerche.
-</footer>
-
-</body>
-</html>
+  <div class="r
