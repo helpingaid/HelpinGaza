@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <script async src="https://cse.google.com/cse.js?cx=a7dd1f714294e49b9"></script>
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TP3S3CX0L4"></script>
     <script>
@@ -15,8 +17,6 @@
         gtag('js', new Date());
         gtag('config', 'G-TP3S3CX0L4');
     </script>
-    
-    <script async src="https://cse.google.com/cse.js?cx=a7dd1f714294e49b9"></script>
 </head>
 <body>
     
@@ -29,7 +29,7 @@
                     <li><a href="#">Chi siamo</a></li>
                     <li><a href="#">Partner</a></li>
                     <li><a href="#">Risorse</a></li>
-                    <li><a href="#">Ricerca</a></li>
+                    <li><a href="search-results.html">Ricerca</a></li>
                 </ul>
             </nav>
         </div>
@@ -40,52 +40,19 @@
             <div class="container hero-center-content">
                 <h2>Gaza Action</h2>
                 <p class="tagline">be a part of the change</p>
+            </div>
+        </section>
 
-                <form class="search-form-center" method="GET"> 
-                    <input type="text" name="q" placeholder="Cerca e sostieni Gaza..." required>
-                    <button type="submit" class="search-button-center">
-                        <i class="fas fa-search"></i> Cerca
-                    </button>
-                </form>
-
-                <div id="cse-results-container" class="cse-results-container">
+        <section class="search-section">
+            <div class="container">
+                <div class="gcse-searchbox-only"></div>
+                
+                <div class="search-results-area">
+                    <h2>Risultati della Ricerca</h2>
                     <div class="gcse-searchresults-only"></div>
                 </div>
             </div>
         </section>
-
-        <div id="page-content">
-            <section class="stats-section">
-                <div class="stats-box">
-                    <p>Ricerche effettuate</p>
-                    <p class="number">12.345</p>
-                </div>
-            </section>
-
-            <section class="main-content-cards">
-                <div class="container card-grid">
-                    
-                    <div class="card">
-                        <div class="icon-circle"><i class="fas fa-heart"></i></div>
-                        <h3>Chi siamo</h3>
-                        <p>La nostra missione e il nostro impegno per aiutare Gaza nel lungo termine.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="icon-circle"><i class="fas fa-users"></i></div>
-                        <h3>Partner</h3>
-                        <p>Organizzazioni e aziende che sostengono il progetto.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="icon-circle"><i class="fas fa-book-open"></i></div>
-                        <h3>Risorse utili</h3>
-                        <p>Link, articoli e strumenti per chi vuole supportare Gaza (Skimlinks e altri)</p>
-                    </div>
-
-                </div>
-            </section>
-        </div>
     </main>
 
     <footer>
@@ -94,42 +61,5 @@
         </div>
     </footer>
     
-    <script>
-        // Funzione per controllare la query URL e innescare la ricerca CSE
-        function handleSearchQuery() {
-            // Ottiene il parametro 'q' dall'URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const query = urlParams.get('q');
-            const pageContent = document.getElementById('page-content');
-            const resultsContainer = document.getElementById('cse-results-container');
-
-            if (query) {
-                // 1. Passa la query al motore di ricerca Google CSE
-                // __gcse è l'oggetto globale di Google CSE
-                if (window.__gcse && window.__gcse.search) {
-                    window.__gcse.search.execute(query);
-                }
-                
-                // 2. Nasconde i contenuti della pagina (stats e card)
-                if (pageContent) {
-                    pageContent.style.display = 'none';
-                }
-                
-                // 3. Mostra lo spazio per i risultati
-                if (resultsContainer) {
-                    resultsContainer.style.display = 'block';
-                }
-                
-            } else {
-                // Nessuna query, nascondi lo spazio per i risultati
-                if (resultsContainer) {
-                    resultsContainer.style.display = 'none';
-                }
-            }
-        }
-
-        // Esegue la funzione al caricamento della pagina
-        window.onload = handleSearchQuery;
-    </script>
 </body>
 </html>
