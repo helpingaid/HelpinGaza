@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SearchForGood - Ricerca per Beneficenza</title>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3825054531176545"
+     crossorigin="anonymous"></script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TP3S3CX0L4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-TP3S3CX0L4');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background: #1e3c72;
+            padding: 20px 40px;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: #ff8c42;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+            font-size: 15px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+
+        nav a:hover, nav a.active {
+            color: #ff8c42;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            padding: 80px 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 15px;
+        }
+
+        .hero .subtitle {
+            font-size: 19px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .search-container {
+            max-width: 700px;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 18px 60px 18px 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.15);
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+            color: white;
+        }
+
+        .search-container input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Google CSE Custom Styling */
+        .gcse-searchbox-only {
+            background: transparent !important;
+        }
+
+        .gsc-search-box {
+            margin: 0 !important;
+        }
+
+        .gsc-input-box {
+            background: rgba(255,255,255,0.15) !important;
+            border: 2px solid rgba(255,255,255,0.3) !important;
+            border-radius: 10px !important;
+            height: auto !important;
+        }
+
+        .gsc-input {
+            background: transparent !important;
+            color: white !important;
+            padding: 18px 20px !important;
+        }
+
+        .gsc-search-button {
+            background: #ff8c42 !important;
+            border: none !important;
+            border-radius: 8px !important;
+            padding: 13px 26px !important;
+            margin-left: 5px !important;
+        }
+
+        .gsc-search-button-v2 {
+            background: #ff8c42 !important;
+            border: none !important;
+            padding: 13px 26px !important;
+            border-radius: 8px !important;
+        }
+
+        .gsst_a {
+            padding: 5px 10px !important;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #ff8c42;
+            border: none;
+            padding: 13px 26px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #ff7a29;
+        }
+
+        .reminder {
+            font-size: 14px;
+            margin-top: 15px;
+            opacity: 0.85;
+        }
+
+        /* CARDS SECTION */
+        .cards-section {
+            padding: 60px 40px;
+            background: #f9fafb;
+        }
+
+        .cards-section h2 {
+            text-align: center;
+            color: #1e3c72;
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 140, 66, 0.2);
+        }
+
+        .card-icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-size: 19px;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* CONTENT SECTION */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .content-section h1 {
+            color: #1e3c72;
+            margin-bottom: 30px;
+            font-size: 38px;
+        }
+
+        .content-block {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .content-block h2 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+
+        .content-block p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* AFFILIAZIONI LAYOUT */
+        .affiliazioni-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .affiliazioni-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+        }
+
+        .affiliate-card {
+            background: white;
+            padding: 20px 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .affiliate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 140, 66, 0.2);
+        }
+
+        .affiliate-card .icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .affiliate-card h3 {
+            color: #1e3c72;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .affiliate-card p {
+            font-size: 12px;
+        }
+
+        .affiliate-sidebar {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            height: fit-content;
+        }
+
+        .affiliate-sidebar h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            padding: 25px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+
+        .faq-question {
+            color: #1e3c72;
+            font-weight: 600;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: #555;
+            margin-top: 15px;
+            line-height: 1.8;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-toggle {
+            font-size: 24px;
+            color: #ff8c42;
+        }
+
+        /* CONTACT FORM */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1e3c72;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff8c42;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #ff8c42;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #ff7a29;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1e3c72;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* RESULTS PAGE */
+        .results-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .gcse-searchresults-only {
+            margin-top: 20px;
+        }
+
+        /* HIDE SECTIONS */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+            .affiliazioni-container {
+                grid-template-columns: 1fr;
+            }
+
+            .content-section {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="logo">🤝 Search<span>ForGood</span></div>
+            <nav>
+                <a href="#" onclick="showPage('home')" class="nav-link active">Home</a>
+                <a href="#" onclick="showPage('valori')" class="nav-link">I nostri valori</a>
+                <a href="#" onclick="showPage('affiliazioni')" class="nav-link">Affiliazioni</a>
+                <a href="#" onclick="showPage('come-funziona')" class="nav-link">Come funziona</a>
+                <a href="#" onclick="showPage('faq')" class="nav-link">FAQ</a>
+                <a href="#" onclick="showPage('contatti')" class="nav-link">Contatti</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page-section active">
+        <div class="hero">
+            <h1>Ricerca con Uno Scopo</h1>
+            <p class="subtitle">Insieme possiamo fare la differenza, una ricerca alla volta</p>
+            <div class="search-container">
+                <!-- Google CSE Search Box -->
+                <script async src="https://cse.google.com/cse.js?cx=a7dd1f714294e49b9"></script>
+                <div class="gcse-searchbox-only"></div>
+            </div>
+            <p class="reminder">📌 Impostaci come homepage e salvaci tra i preferiti</p>
+        </div>
+
+        <div class="cards-section">
+            <h2>I Nostri Partner</h2>
+            <div class="cards">
+                <a href="https://www.ebay.it" target="_blank" class="card">
+                    <div class="card-icon">🛍️</div>
+                    <h3>eBay</h3>
+                    <p>Compra responsabile</p>
+                </a>
+                <a href="https://www.yoox.com" target="_blank" class="card">
+                    <div class="card-icon">👔</div>
+                    <h3>YOOX</h3>
+                    <p>Moda con impatto</p>
+                </a>
+                <a href="https://www.aliexpress.com" target="_blank" class="card">
+                    <div class="card-icon">📦</div>
+                    <h3>AliExpress</h3>
+                    <p>Shopping etico</p>
+                </a>
+                <a href="#" onclick="showPage('affiliazioni'); return false;" class="card">
+                    <div class="card-icon">❤️</div>
+                    <h3>Altri Partner</h3>
+                    <p>Scopri tutti</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESULTS PAGE -->
+    <div id="results" class="page-section">
+        <div class="results-container">
+            <div class="search-container" style="max-width: 100%; margin-bottom: 30px;">
+                <!-- Google CSE Search Box for Results Page -->
+                <script async src="https://cse.google.com/cse.js?cx=a7dd1f714294e49b9"></script>
+                <div class="gcse-searchbox-only"></div>
+            </div>
+            
+            <!-- Google CSE Results -->
+            <div id="google-cse-container">
+                <script async src="https://cse.google.com/cse.js?cx=a7dd1f714294e49b9"></script>
+                <div class="gcse-searchresults-only"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- I NOSTRI VALORI PAGE -->
+    <div id="valori" class="page-section">
+        <div class="content-section">
+            <h1>I Nostri Valori</h1>
+            
+            <div class="content-block">
+                <h2>🌍 Sostenibilità e Impatto Sociale</h2>
+                <p>Crediamo fermamente che ogni piccola azione possa generare un grande cambiamento. Il nostro impegno è quello di trasformare le ricerche quotidiane in un'opportunità concreta per aiutare chi ne ha bisogno. Ogni click conta, ogni ricerca fa la differenza.</p>
+            </div>
+
+            <div class="content-block">
+                <h2>💎 Trasparenza Totale</h2>
+                <p>La fiducia è alla base del nostro progetto. Pubblichiamo regolarmente report dettagliati su come vengono utilizzati i profitti generati dalle ricerche e dagli acquisti affiliati. Vogliamo che tu sappia esattamente dove va ogni euro e quale impatto concreto stai generando con il tuo contributo.</p>
+            </div>
+
+            <div class="content-block">
+                <h2>🤝 Collaborazione e Comunità</h2>
+                <p>Non siamo solo una piattaforma, siamo una comunità di persone che credono nel potere del cambiamento collettivo. Lavoriamo a stretto contatto con organizzazioni verificate e rispettate, assicurandoci che ogni donazione arrivi dove serve davvero.</p>
+            </div>
+
+            <div class="content-block">
+                <h2>🎯 Efficienza e Risultati Concreti</h2>
+                <p>Il nostro obiettivo non è solo raccogliere fondi, ma massimizzare l'impatto di ogni contributo. Selezioniamo con cura i progetti benefici da supportare, privilegiando quelli con il maggior impatto sociale misurabile e verificabile.</p>
+            </div>
+
+            <div class="content-block">
+                <h2>🌟 Innovazione per il Bene Comune</h2>
+                <p>Utilizziamo la tecnologia come strumento di cambiamento positivo. Innoviamo continuamente per rendere più semplice ed efficace il tuo contributo alla società, integrando nuovi partner e sviluppando funzionalità che aumentino l'impatto delle tue azioni quotidiane.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- AFFILIAZIONI PAGE -->
+    <div id="affiliazioni" class="page-section">
+        <div class="content-section">
+            <h1>Le Nostre Affiliazioni</h1>
+            
+            <div class="affiliazioni-container">
+                <div class="affiliazioni-cards">
+                    <a href="https://www.ebay.it" target="_blank" class="affiliate-card">
+                        <div class="icon">🛍️</div>
+                        <h3>eBay</h3>
+                        <p>Marketplace globale</p>
+                    </a>
+                    
+                    <a href="https://www.yoox.com" target="_blank" class="affiliate-card">
+                        <div class="icon">👔</div>
+                        <h3>YOOX</h3>
+                        <p>Fashion & Design</p>
+                    </a>
+                    
+                    <a href="https://www.aliexpress.com" target="_blank" class="affiliate-card">
+                        <div class="icon">📦</div>
+                        <h3>AliExpress</h3>
+                        <p>Shopping internazionale</p>
+                    </a>
+                    
+                    <a href="https://www.amazon.it" target="_blank" class="affiliate-card">
+                        <div class="icon">📚</div>
+                        <h3>Amazon</h3>
+                        <p>Tutto ciò che ti serve</p>
+                    </a>
+                    
+                    <a href="#" class="affiliate-card">
+                        <div class="icon">💻</div>
+                        <h3>Tech Partner</h3>
+                        <p>Elettronica e gadget</p>
+                    </a>
+                    
+                    <a href="#" class="affiliate-card">
+                        <div class="icon">🏠</div>
+                        <h3>Home & Living</h3>
+                        <p>Casa e arredamento</p>
+                    </a>
+                    
+                    <a href="https://www.zalando.it" target="_blank" class="affiliate-card">
+                        <div class="icon">👟</div>
+                        <h3>Zalando</h3>
+                        <p>Moda e scarpe</p>
+                    </a>
+                    
+                    <a href="https://www.decathlon.it" target="_blank" class="affiliate-card">
+                        <div class="icon">⚽</div>
+                        <h3>Decathlon</h3>
+                        <p>Sport e outdoor</p>
+                    </a>
+                    
+                    <a href="https://www.iherb.com" target="_blank" class="affiliate-card">
+                        <div class="icon">🌿</div>
+                        <h3>iHerb</h3>
+                        <p>Salute e benessere</p>
+                    </a>
+                </div>
+                
+                <div class="affiliate-sidebar">
+                    <h3>Come Funzionano le Affiliazioni</h3>
+                    <p style="color: #555; line-height: 1.8;">Quando fai acquisti attraverso i nostri link affiliati, riceviamo una piccola commissione dal venditore, senza alcun costo aggiuntivo per te.</p>
+                    <p style="color: #555; line-height: 1.8; margin-top: 15px;">Il 100% di queste commissioni viene devoluto in beneficenza a organizzazioni verificate che lavorano per cause sociali importanti.</p>
+                    <p style="color: #555; line-height: 1.8; margin-top: 15px;"><strong>Il tuo shopping quotidiano diventa così un gesto concreto di solidarietà!</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COME FUNZIONA PAGE -->
+    <div id="come-funziona" class="page-section">
+        <div class="content-section">
+            <h1>Come Funziona</h1>
+            
+            <div class="content-block">
+                <h2>1️⃣ Cerca sul Web</h2>
+                <p>Utilizza il nostro motore di ricerca proprio come faresti con qualsiasi altro motore. Ogni volta che effettui una ricerca, generiamo piccoli ricavi pubblicitari grazie agli annunci visualizzati nei risultati di ricerca. Questi ricavi vengono completamente devoluti in beneficenza.</p>
+            </div>
+
+            <div class="content-block">
+                <h2>2️⃣ Fai Shopping attraverso i Nostri Partner</h2>
+                <p>Quando fai acquisti cliccando sui link dei nostri partner affiliati (come eBay, YOOX, AliExpress e altri), riceviamo una commissione dal venditore. Questa commissione non comporta alcun costo extra per te - paghi esattamente lo stesso prezzo che pagheresti andando direttamente sul sito. La differenza è che quella piccola percentuale va in beneficenza invece che nelle tasche delle grandi aziende.</p>
+            </div>
+
+            <div class="content-block">
+                <h2>3️⃣ I Profitti Vanno in Beneficenza</h2>
+                <p>Il 100% dei ricavi generati dalle tue ricerche e dai tuoi acquisti viene devoluto a organizzazioni benefiche verificate. Non tratteniamo nulla per noi - ogni singolo centesimo viene donato. Pubblichiamo report trimestrali dettagliati che mostrano esattamente quanto è stato raccolto e a quali organizzazioni è stato donato.</p>
+            </div>
+
+            <div class="content-block">
+                <h2>4️⃣ Monitora il Tuo Impatto</h2>
+                <p>Crediamo nella trasparenza totale. Sul nostro sito puoi vedere statistiche aggiornate su quanto è stato raccolto complessivamente, quante persone stanno partecipando e quali progetti sono stati finanziati grazie al contributo della nostra comunità. Ogni trimestre pubblichiamo report dettagliati con la rendicontazione completa di tutti i fondi raccolti e distribuiti.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ PAGE -->
+    <div id="faq" class="page-section">
+        <div class="content-section">
+            <h1>Domande Frequenti</h1>
+            
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    Quanto costa utilizzare SearchForGood?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    SearchForGood è completamente gratuito! Non c'è alcun costo per utilizzare il nostro motore di ricerca o per fare acquisti attraverso i nostri link affiliati. Quando fai shopping tramite i nostri partner, paghi esattamente lo stesso prezzo che pagheresti andando direttamente sul loro sito.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    Come guadagnate i soldi da donare?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Generiamo ricavi in due modi: attraverso gli annunci pubblicitari mostrati nei risultati di ricerca (tramite Google AdSense) e attraverso commissioni di affiliazione quando fai acquisti cliccando sui link dei nostri partner. Il 100% di questi ricavi viene devoluto in beneficenza.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    A quali organizzazioni donate i fondi?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Collaboriamo con organizzazioni benefiche verificate e rispettate che operano in diversi ambiti: aiuto ai bambini, lotta alla povertà, protezione ambientale, assistenza sanitaria e istruzione. Pubblichiamo regolarmente la lista delle organizzazioni supportate e l'ammontare delle donazioni sul nostro sito.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    Posso vedere dove vanno i miei contributi?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Assolutamente sì! La trasparenza è uno dei nostri valori fondamentali. Pubblichiamo report trimestrali dettagliati che mostrano esattamente quanto è stato raccolto, come è stato distribuito e quali progetti sono stati finanziati. Puoi consultare tutti i report nella sezione dedicata del nostro sito.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    Come posso massimizzare il mio impatto?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Ci sono diversi modi: imposta SearchForGood come motore di ricerca predefinito nel tuo browser, salvaci tra i preferiti, fai i tuoi acquisti online attraverso i nostri link affiliati, e soprattutto parla di noi ad amici e familiari! Più persone usano SearchForGood, maggiore è l'impatto che possiamo generare insieme.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    I miei dati di ricerca sono al sicuro?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Sì! Utilizziamo Google Custom Search per fornire i risultati di ricerca, che applica gli stessi standard di privacy e sicurezza di Google. Non raccogliamo, conserviamo o vendiamo i tuoi dati personali. La tua privacy è fondamentale per noi.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    Posso suggerire un'organizzazione benefica?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Certamente! Siamo sempre aperti a collaborare con nuove organizzazioni verificate e di qualità. Contattaci attraverso la pagina Contatti fornendo informazioni dettagliate sull'organizzazione che vorresti suggerire. Valuteremo attentamente ogni proposta.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    Quanto viene donato effettivamente?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Il 100% dei profitti viene devoluto in beneficenza. Questo significa che tutti i ricavi generati dalle ricerche e dagli acquisti affiliati, dopo aver coperto i costi minimi essenziali di gestione della piattaforma, vengono interamente donati. Non tratteniamo alcun margine di profitto.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTATTI PAGE -->
+    <div id="contatti" class="page-section">
+        <div class="content-section">
+            <h1>Contattaci</h1>
+            
+            <div class="content-block">
+                <p style="text-align: center; margin-bottom: 30px;">
+                    Hai domande, suggerimenti o vuoi collaborare con noi? Siamo qui per ascoltarti!
+                </p>
+                
+                <form class="contact-form" onsubmit="handleContactSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Nome *</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Oggetto *</label>
+                        <input type="text" id="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Messaggio *</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Invia Messaggio</button>
+                </form>
+            </div>
+            
+            <div class="content-block" style="margin-top: 40px; text-align: center;">
+                <h2>Altri Modi per Contattarci</h2>
+                <p style="margin-top: 20px; color: #555;">
+                    📧 Email: <strong>info@searchforgood.org</strong><br>
+                    📱 Social Media: Seguici sui nostri canali per rimanere aggiornato
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 SearchForGood - Tutti i diritti riservati</p>
+        <p style="margin-top: 10px;">Ricerca con uno scopo. Ogni click conta.</p>
+    </footer>
+
+    <script>
+        // Navigation function
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Remove active class from all nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Add active class to clicked nav link
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // FAQ toggle function
+        function toggleFaq(element) {
+            element.classList.toggle('active');
+            const toggle = element.querySelector('.faq-toggle');
+            toggle.textContent = element.classList.contains('active') ? '−' : '+';
+        }
+
+        // Contact form submission
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            alert('Grazie per averci contattato! Risponderemo al più presto alla tua email.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
