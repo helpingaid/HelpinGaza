@@ -498,69 +498,7 @@ footer i {
         padding-top: 60px; 
     }
     
-    /* Search Section Styles */
-.search-section {
-    padding: 40px 0;
-    background-color: #f9f9f9;
-}
-
-/* Google CSE Customization */
-.gsc-control-cse {
-    max-width: 1000px !important;
-    margin: 0 auto !important;
-    background-color: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-}
-
-.gsc-search-box {
-    max-width: 100% !important;
-}
-
-.gsc-input-box {
-    height: 45px !important;
-    border-radius: 4px !important;
-    border: 2px solid #e0e0e0 !important;
-}
-
-.gsc-input {
-    padding-right: 10px !important;
-    font-size: 16px !important;
-}
-
-.gsc-search-button-v2 {
-    padding: 13px 30px !important;
-    border-radius: 4px !important;
-    background-color: #00bcd4 !important;
-    border-color: #00bcd4 !important;
-}
-
-.gsc-search-button-v2:hover {
-    background-color: #0097a7 !important;
-    border-color: #0097a7 !important;
-}
-
-.gsc-result {
-    margin-bottom: 20px !important;
-    padding: 15px !important;
-    background: white !important;
-    border-radius: 8px !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
-}
-
-.gs-title {
-    color: #00bcd4 !important;
-    text-decoration: none !important;
-    font-size: 18px !important;
-}
-
-.gs-snippet {
-    color: #666 !important;
-    line-height: 1.5 !important;
-    font-size: 14px !important;
-}
-
-/* HOMEPAGE: SOTTO-GRIGLIA */
+    /* HOMEPAGE: SOTTO-GRIGLIA */
     .sub-card-grid {
         grid-template-columns: 1fr; 
         gap: 10px;
